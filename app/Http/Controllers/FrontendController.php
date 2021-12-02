@@ -43,7 +43,10 @@ class FrontendController extends Controller
     public function productDetail($slug){
         $product_detail= Product::getProductBySlug($slug);
         // dd($product_detail);
-        return view('frontend.pages.product_detail')->with('product_detail',$product_detail);
+        $products = Product::all()->take(4);
+        
+        $setting=Settings::first();
+        return view('frontend.product_detail')->with('product_detail',$product_detail,)->with('setting',$setting)->with('products',$products);
     }
 
     public function product(){

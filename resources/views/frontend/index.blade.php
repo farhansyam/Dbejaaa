@@ -66,7 +66,7 @@
     </header>
     <div class="ps-hero bg--cover" data-background="" style="background: url(" images="" hero="">
       <div class="ps-hero__content">
-        <h1> Dbeja Cookies</h1>
+        <h1> TERSERAH INI ISI APA ALAMATNYA YANG DI ATAS GANTI YA JA</h1>
       </div>
     </div>
     <!-- Home banner-->

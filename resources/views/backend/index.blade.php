@@ -38,7 +38,7 @@
                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Order</div>
                 <div class="row no-gutters align-items-center">
                   <div class="col-auto">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{\App\Models\Order::countActiveOrder()}}</div>
+                    {{-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{\App\Models\Order::countActiveOrder()}}</div> --}}
                   </div>
                   
                 </div>
@@ -113,7 +113,7 @@
 </script>
   {{-- line chart --}}
   <script type="text/javascript">
-    const url = "{{route('product.order.income')}}";
+    
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';

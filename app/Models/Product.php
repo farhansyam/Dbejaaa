@@ -12,6 +12,10 @@ class Product extends Model
     public static function getAllProduct(){
         return Product::orderBy('id','desc')->paginate(10);
     }
+
+    public static function getProductBySlug($slug){
+        return Product::where('slug',$slug)->first();
+    }
    
     public function getReview(){
         return $this->hasMany('App\Models\ProductReview','product_id','id')->with('user_info')->where('status','active')->orderBy('id','DESC');

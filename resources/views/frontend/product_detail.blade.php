@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7"><![endif]-->
-<!--[if IE 8]><html class="ie ie8"><![endif]-->
-<!--[if IE 9]><html class="ie ie9"><![endif]-->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -26,13 +23,8 @@
     <link rel="stylesheet" href="{{asset('frontend/plugins/slick/slick/slick.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/plugins/lightGallery-master/dist/css/lightgallery.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
-    <style>
-      .ps-product--banner > img {
-    width: 90%;
-}
-    </style>
   </head>
-  <body>
+ <body>
     <div class="ps-search">
       <div class="ps-search__content"><a class="ps-search__close" href="#"><span></span></a>
         <form class="ps-form--search-2" action="do_action" method="post">
@@ -51,121 +43,110 @@
           <div class="left">
             <p>460 West 34th Street, 15th floor, New York  -  Hotline: 804-377-3580 - 804-399-3580</p>
           </div>
-          <div class="right">
-            <ul class="ps-list--social">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            </ul>
-          </div>
         </div>
       </div>
       <nav class="navigation">
         <div class="ps-container"><a class="ps-logo" href="/"><img src="{{$setting->logo}}" alt=""></a>
           <div class="menu-toggle"><span></span></div>
           <ul class="menu" style="display: block;">
-            <li class=""><a href="/">Beranda</a>
+            <li class="><a href="/">Beranda</a>
             </li>
             <li><a href="about.html">About</a></li>
-            <li class="current-menu-item"><a href="{{route('product')}}">product</a>
+            <li class="current-menu-item""><a href="{{route('product')}}">product</a>
             </li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
       </nav>
     </header>
-    <div class="ps-hero bg--cover" data-background="{{url('/storage/photos/1/product.jpg')}}" hero="">
+    <div class="ps-hero bg--cover" data-background="images/hero/product.jpg">
       <div class="ps-hero__content">
-        <h1> Dbeja Cookies</h1>
+        <h1> Product Details</h1>
+        <div class="ps-breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Product Details</li>
+          </ol>
+        </div>
       </div>
     </div>
-    <main class="ps-shop">
-      <div class="ps-shop__wrapper">
-        <div class="ps-shop__banners">
+    <main class="ps-main">
+      <div class="ps-container">
+        <div class="ps-product--detail">
           <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-              <div class="ps-collection"><a class="ps-collection__overlay" href="#"></a><img src="images/collection/product-1.jpg" alt=""></div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-              <div class="ps-collection"><a class="ps-collection__overlay" href="#"></a><img src="images/collection/product-2.jpg" alt=""></div>
-            </div>
-          </div>
-        </div>
-        <div class="ps-shop__sort">
-          <p>Show 1-12 of 35 result</p>
-          <div class="btn-group bootstrap-select ps-select"><button type="button" class="btn dropdown-toggle bs-placeholder btn-default" data-toggle="dropdown" role="button" title="Default Sorting"><span class="filter-option pull-left">Default Sorting</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox"><ul class="dropdown-menu inner" role="listbox" aria-expanded="false"><li data-original-index="1"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Option 1</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Option 2</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Option 3</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div><select class="ps-select" title="Default Sorting" tabindex="-98"><option class="bs-title-option" value="">Default Sorting</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select></div>
-        </div>
-        <div class="ps-row">
-          @foreach ($product_lists as $product)
-              
-          
-          <div class="ps-column">
-            <div class="ps-product">
-              <div class="ps-product__thumbnail"><img src="{{$product->photo}}" alt=""><a class="ps-product__overlay" href="{{route('product-detail',$product->slug)}}"></a>
-                <ul class="ps-product__actions">
-                  <li><a href="{{route('product-detail',$product->slug)}}" data-tooltip="Lihat Detail"><i class="ba-magnifying-glass"></i></a></li>
-                  <li><a href="#" data-tooltip="Beli"><i class="ba-shopping"></i></a></li>
-                </ul>
-              </div>
-              <div class="ps-product__content"><a class="ps-product__title" href="product-detail.html">{{$product->title}}</a>
-                <p><a href="product-list.html">Bakery</a> - <a href="product-list.html">Sweet</a> - <a href="product-list.html">Bio</a></p>
-                <div class="br-wrapper br-theme-fontawesome-stars"> <select class="ps-rating" style="display: none;">
-                </select><div class="br-widget"></div></div>
-                <p class="ps-product__price">Rp.{{$product->price}}</p>
+            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 ">
+              <div class="ps-product__thumbnail"><span class="ps-badge"><img src="/storage/photos/1/badge-red.png" alt=""><i>New</i></span><span class="ps-badge ps-badge--sale"><img src="images/icons/badge-brown.png" alt=""><i>50%</i></span>
+                <div class="ps-product__image">
+                  <div class="item"><a href="{{$product_detail->photo}}"><img src="{{$product_detail->photo}}" alt=""></a></div>
+                </div>
+                <div class="ps-product__preview">
+                  <div class="ps-product__variants">
+                    <div class="item"><img src="{{$product_detail->photo}}" alt=""></div>
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 ">
+              <div class="ps-product__info">
+                <h1 class="text-uppercase">{{$product_detail->title}}</h1>
+                <h3 class="ps-product__price"><span>Rp.</span>{{$product_detail->price}}</h3>
+                <div class="ps-product__desc">
+                  <h5>Quick Overview</h5>
+                  <p>{!! $product_detail->description !!}</p>
+                </div>
+                <div class="ps-product__status">
+                  <h5>Stock: <span> {{$product_detail->stock}}</span></h5>
+                </div>
+                <div class="ps-product__shopping">
+                  <form class="ps-form--shopping" action="do_action" method="post">
+                    <div class="form-group--number">
+                      <button class="minus"><span>-</span></button>
+                      <input class="form-control" type="text" value="1">
+                      <button class="plus"><span>+</span></button>
+                    </div>
+                    <div class="ps-product__actions"></div>
+                  </form>
+                </div>
+                <div class="ps-product__sharing"><a class="ps-btn ps-btn--yellow" href="cart.html">Order Now</a>
+                  <p class="text-right">Share this:<a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a></p>
+                </div>
+              </div>
+            </div>
           </div>
-
-          @endforeach
-        </div>
-        <div class="ps-pagination">
-          <ul class="pagination">
-            <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">...</a></li>
-            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-          </ul>
         </div>
       </div>
-      <aside class="ps-sidebar">
-        <aside class="widget widget_sidebar widget_category">
-          <h3 class="widget-title">Categories</h3>
-          <ul class="ps-list--checked">
-            <li class="current"><a href="product-listing.html">Bready</a></li>
-            <li><a href="product-listing.html">Donut(76)</a></li>
-            <li><a href="product-listing.html">Pinpool(69)</a></li>
-            <li><a href="product-listing.html">Deliciuex (36)</a></li>
-            <li><a href="product-listing.html">Cake (108)</a></li>
-            <li><a href="product-listing.html">Cupcake (47)</a></li>
-            <li><a href="product-listing.html">More</a></li>
-          </ul>
-        </aside>
-        <aside class="widget widget_filter widget_sidebar">
-          <h3 class="widget-title">Filter Price</h3>
-          <div class="ps-slider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-default-min="0" data-default-max="500" data-max="1000" data-step="100" data-unit="$"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 50%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 50%;"></span></div>
-          <p class="ps-slider__meta">Price:<span class="ps-slider__value ps-slider__min">$0</span>-<span class="ps-slider__value ps-slider__max">$500</span></p><a class="ac-slider__filter ps-btn ps-btn--sm" href="#">Search</a>
-        </aside>
-        <aside class="widget widget_sidebar widget_category">
-          <h3 class="widget-title">Brands</h3>
-          <ul class="ps-list--checked">
-            <li class="current"><a href="product-listing.html">Sugar (521)</a></li>
-            <li><a href="product-listing.html">Food Stylist (76)</a></li>
-            <li><a href="product-listing.html">Halo (69)</a></li>
-            <li><a href="product-listing.html">ProjectNews (36)</a></li>
-            <li><a href="product-listing.html">B&amp;G (108)</a></li>
-            <li><a href="product-listing.html">Louis Vuiton (47)</a></li>
-          </ul>
-        </aside>
-        <aside class="widget widget_sidebar widget_ads">
-          <h3 class="widget-title">Ads banner</h3><a href="#"><img src="images/widget-ads.jpg" alt=""></a>
-        </aside>
-      </aside>
     </main>
+    <!-- Relate product-->
+    <div class="ps-related-product">
+      <div class="ps-container">
+        <div class="ps-section__header text-center">
+          <h3 class="ps-section__title">Related Products</h3>
+          <p>Maybe you like</p><span><img src="images/icons/floral.png" alt=""></span>
+        </div>
+        <div class="ps-section__content">
+          <div class="row">
+            @foreach ($products as $product)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+              <div class="ps-product">
+                <div class="ps-product__thumbnail"><img src="{{$product->photo}}" alt=""><a class="ps-product__overlay" href="{{route('product-detail',$product->slug)}}"></a>
+                  <ul class="ps-product__actions">
+                    <li><a href="{{route('product-detail',$product->slug)}}" data-tooltip="Lihat Detail"><i class="ba-magnifying-glass"></i></a></li>
+                    <li><a href="#" data-tooltip="Add to Cart"><i class="ba-shopping"></i></a></li>
+                  </ul>
+                </div>
+                <div class="ps-product__content"><a class="ps-product__title" href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a>
+                  <p><a href="{{route('product-detail',$product->slug)}}">Bakery</a> - <a href="{{route('product-detail',$product->slug)}}">Sweet</a> - <a href="product-list.html">Bio</a></p>
+                  <p class="ps-product__price">Rp.{{$product->price}}</p>
+                </div>
+              </div>
+            </div>
+            @endforeach 
+
+          </div>
+          <div class="ps-section__footer text-center"><a class="ps-btn" href="{{url('product')}}">Load more</a></div>
+        </div>
+      </div>
+    </div>
     <footer class="ps-footer">
       <div class="ps-footer__content">
         <div class="ps-container">
@@ -180,6 +161,7 @@
                 </ul>
               </div>
             </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
               <form class="ps-form--subscribe-offer" action="do_action" method="post">
                 <h4>Get news & offer</h4>
                 <div class="form-group">
@@ -230,7 +212,7 @@
       </div>
     </div>
     <!-- Plugins-->
-    <script src="{{asset('frontend/plugins/jquery/dist/jquery.min.js')}}"></script>
+ <script src="{{asset('frontend/plugins/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('frontend/plugins/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend/plugins/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
