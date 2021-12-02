@@ -19,7 +19,6 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Title</th>
               <th>Slug</th>
               <th>Photo</th>
               <th>Status</th>
@@ -29,7 +28,6 @@
           <tfoot>
             <tr>
               <th>S.N.</th>
-              <th>Title</th>
               <th>Slug</th>
               <th>Photo</th>
               <th>Status</th>
@@ -40,7 +38,6 @@
             @foreach($banners as $banner)   
                 <tr>
                     <td>{{$banner->id}}</td>
-                    <td>{{$banner->title}}</td>
                     <td>{{$banner->slug}}</td>
                     <td>
                         @if($banner->photo)

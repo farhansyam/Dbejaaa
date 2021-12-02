@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Category;
-use App\Models\Brand;
 
 use Illuminate\Support\Str;
 
@@ -30,10 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brand=Brand::get();
-        $category=Category::where('is_parent',1)->get();
-        // return $category;
-        return view('backend.product.create')->with('categories',$category)->with('brands',$brand);
+        return view('backend.product.create');
     }
 
     /**
@@ -50,12 +45,10 @@ class ProductController extends Controller
             'summary'=>'string|required',
             'description'=>'string|nullable',
             'photo'=>'string|required',
-            'size'=>'nullable',
             'stock'=>"required|numeric",
             'status'=>'required|in:active,inactive',
             'condition'=>'required|in:default,new,hot',
             'price'=>'required|numeric',
-            'discount'=>'nullable|numeric'
         ]);
 
         $data=$request->all();
@@ -65,15 +58,6 @@ class ProductController extends Controller
             $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
         }
         $data['slug']=$slug;
-        $size=$request->input('size');
-        if($size){
-            $data['size']=implode(',',$size);
-        }
-        else{
-            $data['size']='';
-        }
-        // return $size;
-        // return $data;
         $status=Product::create($data);
         if($status){
             request()->session()->flash('success','Product Successfully added');
@@ -104,23 +88,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $brand=Brand::get();
         $product=Product::findOrFail($id);
-        $category=Category::where('is_parent',1)->get();
         $items=Product::where('id',$id)->get();
         // return $items;
-        return view('backend.product.edit')->with('product',$product)
-                    ->with('brands',$brand)
-                    ->with('categories',$category)->with('items',$items);
+        return view('backend.product.edit')->with('product',$product)->with('items',$items);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $product=Product::findOrFail($id);
@@ -129,22 +102,13 @@ class ProductController extends Controller
             'summary'=>'string|required',
             'description'=>'string|nullable',
             'photo'=>'string|required',
-            'size'=>'nullable',
             'stock'=>"required|numeric",
             'status'=>'required|in:active,inactive',
             'condition'=>'required|in:default,new,hot',
             'price'=>'required|numeric',
-            'discount'=>'nullable|numeric'
         ]);
 
         $data=$request->all();
-        $size=$request->input('size');
-        if($size){
-            $data['size']=implode(',',$size);
-        }
-        else{
-            $data['size']='';
-        }
         // return $data;
         $status=$product->fill($data)->save();
         if($status){

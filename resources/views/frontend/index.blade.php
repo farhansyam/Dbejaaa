@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7"><![endif]-->
-<!--[if IE 8]><html class="ie ie8"><![endif]-->
-<!--[if IE 9]><html class="ie ie9"><![endif]-->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -51,30 +48,10 @@
           <div class="left">
             <p>460 West 34th Street, 15th floor, New York  -  Hotline: 804-377-3580 - 804-399-3580</p>
           </div>
-          <div class="right">
-            <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">USD<i class="fa fa-angle-down"></i></a>
-              <ul class="dropdown-menu">
-                <li><a href="#"> USD</a></li>
-                <li><a href="#"> SGD</a></li>
-                <li><a href="#">JPN</a></li>
-              </ul>
-            </div>
-            <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language<i class="fa fa-angle-down"></i></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">English</a></li>
-                <li><a href="#">Japanese</a></li>
-              </ul>
-            </div>
-            <ul class="ps-list--social">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            </ul>
-          </div>
         </div>
       </div>
       <nav class="navigation">
-        <div class="ps-container"><a class="ps-logo" href="homepage-3.html"><img src="{{$setting->logo}}" alt=""></a>
+        <div class="ps-container"><a class="ps-logo" href="/"><img src="{{$setting->logo}}" alt=""></a>
           <div class="menu-toggle"><span></span></div>
           <ul class="menu" style="display: block;">
             <li class="current-menu-item"><a href="/">Beranda</a>
@@ -98,8 +75,8 @@
         @foreach ($banners as $banner)
             
         <div class="item">
-          <div class="ps-product--banner"><span class="ps-badge ps-badge--sale"><img src="{{asset('frontend/images/icons/badge-brown.png')}}" alt=""><i>{{$banner->title}}</i></span><img src="{{$banner->photo}}" alt="">
-            <div class="ps-product__footer"><a class="ps-btn" href="order-form.html">Order Now</a></div>
+          <div class="ps-product--banner"><span class="ps-badge ps-badge--sale"><img src="{{asset('frontend/images/icons/badge-brown.png')}}" alt=""></span><img src="{{$banner->photo}}" alt="">
+            <div class="ps-product__footer"><a class="ps-btn" href="order-form.html"><i>{!!$banner->description!!}</i> Order Now</a></div>
           </div>
         </div>
         @endforeach

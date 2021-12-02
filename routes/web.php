@@ -45,7 +45,6 @@ Route::get('/product-grids','FrontendController@productGrids')->name('product-gr
 Route::get('/product-lists','FrontendController@productLists')->name('product-lists');
 Route::match(['get','post'],'/filter','FrontendController@productFilter')->name('shop.filter');
 // Order Track
-Route::post('/coupon-store','CouponController@couponStore')->name('coupon-store');
 // Payment
 
 // Backend section start
@@ -64,23 +63,11 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     Route::post('/profile/{id}','AdminController@profileUpdate')->name('profile-update');
     // Product
     Route::resource('/product','ProductController');
-    // Ajax for sub category
-    // Message
-    Route::resource('/message','MessageController');
-    Route::get('/message/five','MessageController@messageFive')->name('messages.five');
 
-    // Order
-    Route::resource('/order','OrderController');
-    // Shipping
-    Route::resource('/coupon','CouponController');
     // Settings
     Route::get('settings','AdminController@settings')->name('settings');
     Route::post('setting/update','AdminController@settingsUpdate')->name('settings.update');
 
-    // Notification
-    Route::get('/notification/{id}','NotificationController@show')->name('admin.notification');
-    Route::get('/notifications','NotificationController@index')->name('all.notification');
-    Route::delete('/notification/{id}','NotificationController@delete')->name('notification.delete');
     // Password Change
     Route::get('change-password', 'AdminController@changePassword')->name('change.password.form');
     Route::post('change-password', 'AdminController@changPasswordStore')->name('change.password');
@@ -93,7 +80,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
 
 
 
-
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 // User section start
 Route::group(['prefix'=>'/user','middleware'=>['user']],function(){
@@ -101,25 +90,6 @@ Route::group(['prefix'=>'/user','middleware'=>['user']],function(){
      // Profile
      Route::get('/profile','HomeController@profile')->name('user-profile');
      Route::post('/profile/{id}','HomeController@profileUpdate')->name('user-profile-update');
-    //  Order
-    Route::get('/order',"HomeController@orderIndex")->name('user.order.index');
-    Route::get('/order/show/{id}',"HomeController@orderShow")->name('user.order.show');
-    Route::delete('/order/delete/{id}','HomeController@userOrderDelete')->name('user.order.delete');
-    // Product Review
-    Route::get('/user-review','HomeController@productReviewIndex')->name('user.productreview.index');
-    Route::delete('/user-review/delete/{id}','HomeController@productReviewDelete')->name('user.productreview.delete');
-    Route::get('/user-review/edit/{id}','HomeController@productReviewEdit')->name('user.productreview.edit');
-    Route::patch('/user-review/update/{id}','HomeController@productReviewUpdate')->name('user.productreview.update');
-    
-    // Post comment
-    Route::get('user-post/comment','HomeController@userComment')->name('user.post-comment.index');
-    Route::delete('user-post/comment/delete/{id}','HomeController@userCommentDelete')->name('user.post-comment.delete');
-    Route::get('user-post/comment/edit/{id}','HomeController@userCommentEdit')->name('user.post-comment.edit');
-    Route::patch('user-post/comment/udpate/{id}','HomeController@userCommentUpdate')->name('user.post-comment.update');
-    
-    // Password Change
-    Route::get('change-password', 'HomeController@changePassword')->name('user.change.password.form');
-    Route::post('change-password', 'HomeController@changPasswordStore')->name('change.password');
 
 });
 
