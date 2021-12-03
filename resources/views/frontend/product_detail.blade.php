@@ -98,16 +98,19 @@
                   <h5>Stock: <span> {{$product_detail->stock}}</span></h5>
                 </div>
                 <div class="ps-product__shopping">
-                  <form class="ps-form--shopping" action="do_action" method="post">
+                  <form class="ps-form--shopping" name="myFormName" action="do_action" method="post">
                     <div class="form-group--number">
                       <button class="minus"><span>-</span></button>
-                      <input class="form-control" type="text" value="1">
+                      <input class="form-control" id="no1" type="number" value="1">
+                      <input class="form-control" id="slug" style="display: none" type="text" value="{{$product_detail->slug}}">
                       <button class="plus"><span>+</span></button>
                     </div>
                     <div class="ps-product__actions"></div>
                   </form>
                 </div>
-                <div class="ps-product__sharing"><a class="ps-btn ps-btn--yellow" href="cart.html">Order Now</a>
+                <div id="total"></div>
+                <a onmouseenter="reSum()" class="ps-btn ps-btn--yellow" id="ordercuy" href="{{$product_detail->slug}}/">Order Now</a>
+                <div class="ps-product__sharing">
                   <p class="text-right">Share this:<a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a></p>
                 </div>
               </div>
@@ -131,7 +134,7 @@
                 <div class="ps-product__thumbnail"><img src="{{$product->photo}}" alt=""><a class="ps-product__overlay" href="{{route('product-detail',$product->slug)}}"></a>
                   <ul class="ps-product__actions">
                     <li><a href="{{route('product-detail',$product->slug)}}" data-tooltip="Lihat Detail"><i class="ba-magnifying-glass"></i></a></li>
-                    <li><a href="#" data-tooltip="Add to Cart"><i class="ba-shopping"></i></a></li>
+                    <li><a href="#" data-tooltip="Pesan Sekarang"><i class="ba-shopping"></i></a></li>
                   </ul>
                 </div>
                 <div class="ps-product__content"><a class="ps-product__title" href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a>
@@ -212,6 +215,26 @@
       </div>
     </div>
     <!-- Plugins-->
+<script>
+   
+var slug = document.getElementById("slug").value;
+
+function reSum() {
+            var link = document.getElementById("ordercuy");
+            var qty = String(document.getElementById("no1").value)
+
+            var newew = slug +"/"+ qty
+
+
+            link.setAttribute('href',newew );
+
+            return false;
+            var num1 = document.getElementById("no1").value;
+            document.getElementById("total").innerHtml = num1;
+            console.log( document.getElementById("no1").value)
+        }
+</script>
+
  <script src="{{asset('frontend/plugins/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('frontend/plugins/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/plugins/owl-carousel/owl.carousel.min.js')}}"></script>

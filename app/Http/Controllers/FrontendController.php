@@ -49,6 +49,16 @@ class FrontendController extends Controller
         return view('frontend.product_detail')->with('product_detail',$product_detail,)->with('setting',$setting)->with('products',$products);
     }
 
+
+    public function productDetailOrder($slug,$qty){
+        $product_detail= Product::getProductBySlug($slug);
+        $total =  $product_detail->price * $qty;
+        dd($total);
+        
+        $setting=Settings::first();
+        return view('frontend.product_detail')->with('product_detail',$product_detail,)->with('setting',$setting)->with('products',$products);
+    }
+
     public function product(){
         $products=Product::query();
         $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
