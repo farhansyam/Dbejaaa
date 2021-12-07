@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7"><![endif]-->
-<!--[if IE 8]><html class="ie ie8"><![endif]-->
-<!--[if IE 9]><html class="ie ie9"><![endif]-->
 <html lang="en">
 
 <head>
@@ -27,12 +24,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/plugins/slick/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/plugins/lightGallery-master/dist/css/lightgallery.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-    <style>
-        .ps-product--banner>img {
-            width: 90%;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -49,7 +40,6 @@
     </div>
     <!-- Header-->
     <header class="header header--3" data-sticky="false">
-
         <nav class="navigation">
             <div class="ps-container"><a class="ps-logo" href="/"><img src="{{ asset('logoo.png') }}" alt=""></a>
                 <div class="menu-toggle"><span></span></div>
@@ -64,60 +54,94 @@
             </div>
         </nav>
     </header>
-    <div style="min-height:0 !important;" class="ps-hero bg--cover" data-background="{{ url('/storage/photos/1/product.jpg') }}" hero="">
+    <div class="ps-hero bg--cover" data-background="images/hero/product.jpg">
         <div class="ps-hero__content">
-            <div class="ps-section__header">
-                <h3 class="ps-section__title">Dbeja Cookies</h3>
-                <p>Menyediakan aneka camilan kue kering di Banyuwangi</p>
+            <h1> Product Details</h1>
+            <div class="ps-breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Product Details</li>
+                </ol>
             </div>
         </div>
     </div>
-    <main style="padding-top:0 !important;" class="ps-shop">
-        <div class="ps-shop__wrapper">
-
-            <div class="ps-shop__sort">
-                <!--<p>Show 1-12 of 35 result</p>-->
-
-            </div>
-
-
-            <div style="margin-left:10px" class="ps-row">
-                @foreach ($product_lists as $product)
-
-
-                    <div class="ps-column">
-                        <div class="ps-product">
-                            <div class="ps-product__thumbnail"><img src="{{ $product->photo }}" alt="" width="100%" height="300px"><a class="ps-product__overlay" href="{{ route('product-detail', $product->slug) }}"></a>
-                                <ul class="ps-product__actions">
-                                    <li><a href="{{ route('product-detail', $product->slug) }}" data-tooltip="Lihat Detail"><i class="ba-magnifying-glass"></i></a></li>
-                                    <li><a href="#" data-tooltip="Beli"><i class="ba-shopping"></i></a></li>
-                                </ul>
+    <main class="ps-main">
+        <div class="ps-container">
+            <div class="ps-product--detail">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 ">
+                        <div class="ps-product__thumbnail"><span class="ps-badge"><img src="/storage/photos/1/badge-red.png" alt=""><i>New</i></span><span class="ps-badge ps-badge--sale"><img src="images/icons/badge-brown.png" alt=""><i>50%</i></span>
+                            <div class="ps-product__image">
+                                <div class="item"><a href="{{ $product_detail->photo }}"><img src="{{ $product_detail->photo }}" alt=""></a></div>
                             </div>
-                            <div class="ps-product__content"><a class="ps-product__title" href="product-detail.html">{{ $product->title }}</a>
-
-
-                                <p class="ps-product__price">Rp.{{ $product->price }}</p>
+                            <div class="ps-product__preview">
+                                <div class="ps-product__variants">
+                                    <div class="item"><img src="{{ $product_detail->photo }}" alt=""></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                @endforeach
-            </div>
-
-
-            <div class="ps-pagination">
-                <ul class="pagination">
-                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">...</a></li>
-                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
+                    <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 ">
+                        <div class="ps-product__info">
+                            <h1 class="text-uppercase">{{ $product_detail->title }}</h1>
+                            <h3 class="ps-product__price"><span>Rp.</span>{{ $product_detail->price }}</h3>
+                            <div class="ps-product__desc">
+                                <p>{!! $product_detail->description !!}</p>
+                            </div>
+                            <div class="ps-product__status">
+                                <h5>Stock: <span> {{ $product_detail->stock }}</span></h5>
+                            </div>
+                            <div class="ps-product__shopping">
+                                <form class="ps-form--shopping" name="myFormName" action="do_action" method="post">
+                                    <div class="form-group--number">
+                                        <button class="minus"><span>-</span></button>
+                                        <input class="form-control" id="no1" type="number" value="1">
+                                        <input class="form-control" id="slug" style="display: none" type="text" value="{{ $product_detail->slug }}">
+                                        <button class="plus"><span>+</span></button>
+                                    </div>
+                                    <div class="ps-product__actions"></div>
+                                </form>
+                            </div>
+                            <div id="total"></div>
+                            <a onmouseenter="reSum()" class="ps-btn ps-btn--yellow" style="margin-top: 15px;" id="ordercuy" href="{{ $product_detail->slug }}/">Order Now</a>
+                            <div class="ps-product__sharing">
+                                <p class="text-right">Share this:<a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </main>
+    <!-- Relate product-->
+    <div class="ps-related-product">
+        <div class="ps-container">
+            <div class="ps-section__header text-center">
+                <h3 class="ps-section__title">Related Products</h3>
+                <p>Maybe you like</p><span><img src="images/icons/floral.png" alt=""></span>
+            </div>
+            <div class="ps-section__content">
+                <div class="row">
+                    @foreach ($products as $product)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                            <div class="ps-product">
+                                <div class="ps-product__thumbnail"><img src="{{ $product->photo }}" alt="" width="100%" height="300px"><a class="ps-product__overlay" href="{{ route('product-detail', $product->slug) }}"></a>
+                                    <ul class="ps-product__actions">
+                                        <li><a href="{{ route('product-detail', $product->slug) }}" data-tooltip="Lihat Detail"><i class="ba-magnifying-glass"></i></a></li>
+                                        <li><a href="#" data-tooltip="Pesan Sekarang"><i class="ba-shopping"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="ps-product__content"><a class="ps-product__title" href="{{ route('product-detail', $product->slug) }}">{{ $product->title }}</a>
+                                    <p class="ps-product__price">Rp.{{ $product->price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="ps-section__footer text-center"><a class="ps-btn" href="{{ url('product') }}">Load more</a></div>
+            </div>
+        </div>
+    </div>
     <footer class="ps-footer">
             <div class="ps-footer__content">
                 <div class="ps-container">
@@ -181,6 +205,20 @@
         </div>
     </div>
     <!-- Plugins-->
+    <script>
+        var slug = document.getElementById("slug").value;
+
+        function reSum() {
+            var link = document.getElementById("ordercuy");
+            var qty = String(document.getElementById("no1").value)
+            var newew = slug + "/" + qty
+            link.setAttribute('href', newew);
+            return false;
+            var num1 = document.getElementById("no1").value;
+            document.getElementById("total").innerHtml = num1;
+            console.log(document.getElementById("no1").value)
+        }
+    </script>
     <script src="{{ asset('frontend/plugins/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/owl-carousel/owl.carousel.min.js') }}"></script>

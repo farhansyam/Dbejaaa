@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10791c3849ace73800bcedb822799957",
+    "content-hash": "01726f3bf16f4bca68e6b12ccf88f1ba",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -909,6 +909,53 @@
                 }
             ],
             "time": "2021-10-03T14:17:12+00:00"
+        },
+        {
+            "name": "irfa/raja-ongkir",
+            "version": "v1.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/irfaardy/raja-ongkir.git",
+                "reference": "419792ef17cad75d62bef04a5ae939ee92ebcca9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/irfaardy/raja-ongkir/zipball/419792ef17cad75d62bef04a5ae939ee92ebcca9",
+                "reference": "419792ef17cad75d62bef04a5ae939ee92ebcca9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Irfa\\RajaOngkir\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Irfa A",
+                    "email": "irfa.backend@protonmail.com"
+                }
+            ],
+            "description": "\"Laravel Raja Ongkir Package\"",
+            "keywords": [
+                "cek ongkir",
+                "laravel",
+                "ongkir",
+                "php",
+                "raja ongkir"
+            ],
+            "support": {
+                "issues": "https://github.com/irfaardy/raja-ongkir/issues",
+                "source": "https://github.com/irfaardy/raja-ongkir/tree/1.33"
+            },
+            "time": "2020-06-03T08:08:20+00:00"
         },
         {
             "name": "laravel/framework",

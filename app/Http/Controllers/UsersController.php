@@ -100,7 +100,7 @@ class UsersController extends Controller
             'email'=>'string|required',
             'role'=>'required|in:admin,user',
             'status'=>'required|in:active,inactive',
-            'photo'=>'nullable|string',
+            'photo'=>'string|required',
         ]);
         // dd($request->all());
         $data=$request->all();
